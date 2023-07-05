@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Slider Manual</title>
+<style type="text/css">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #343f4f;
+}
+
+.slide-container {
+  max-width: 650px;
+  width: 100%;
+  height: 400px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.slide img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border: 10px solid #fff;
+  border-radius: 18px;
+  display: flex;
+}
+
+.arrow {
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.712);
+  padding: 8px 19px;
+  border-radius: 50%;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev {
+  left: 10px;
+}
+
+.caption {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px 0;
+}
+
+.slide {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: all 0.4s ease;
+}
+
+@media only screen and (max-width: 600px) {
+  .slide-container {
+    height: auto;
+    padding: 10px;
+  }
+  
+  .slide img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .caption {
+    font-size: 16px;
+    padding: 10px 0;
+  }
+}
+</style>
+</head>
+<body>
+<div class="slide-container">
+  <div class="slide">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqKzxEYS9IqjlhS37-5MNsjagk6J8mDmt3ozDsmpicxn3_N1s7ISFb6VtFlKFSblCX_hw&usqp=CAU" alt="one">
+    <div class="caption">Caption text 1</div>
+  </div>
+  
+  <div class="slide">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKzZofTdRvyKn9tkhfC00BtHck2VbXpIbGQQ&usqp=CAU" alt="two">
+    <div class="caption">Caption text 2</div>
+  </div>
+  
+  <div class="slide">
+    <img src="https://gobookmart.com/wp-content/uploads/2022/06/Lord-Vishnu-Preserver-and-Protector-Hindu-God.webp" alt="three">
+    <div class="caption">Caption text 3</div>
+  </div>
+  
+  <div class="slide">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV6SU1d9OhoSuJF8gJJ_F4WckwgMiIHAb6Z4XW56q3LtNdkVAPOpRENbKI4gl6gzIX8EU&usqp=CAU" alt="four">
+    <div class="caption">Caption text 4</div>
+  </div>
+  
+  <div class="slide">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGK4bEWasjDWrnL-bl6F0qxQf6OAJ4rNLpUx_y4xibsVj-zttcn6_t2aImqma8S3JGXDM&usqp=CAU" alt="five">
+    <div class="caption">Caption text 5</div>
+  </div>
+</div>
+
+<span class="arrow prev" onclick="controller(-1)">&#10094;</span>
+<span class="arrow next" onclick="controller(1)">&#10095;</span>
+
+<script type="text/javascript">
+let flag = 0;
+
+function controller(x) {
+  flag = flag + x;
+  slideshow(flag);
+}
+
+slideshow(flag);
+
+function slideshow(num) {
+  let slides = document.getElementsByClassName('slide');
+  
+  if (num == slides.length) {
+    flag = 0;
+    num = 0;
+  }
+  
+  if (num < 0) {
+    flag = slides.length - 1;
+    num = slides.length - 1;
+  }
+  
+  for (let y of slides) {
+    y.style.display = "none";
+  }
+  
+  slides[num].style.display = "block";
+}
+</script>
+</body>
+</html>
+s
